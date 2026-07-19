@@ -1,3 +1,5 @@
+<!-- Copyright 2026 SenseTime Group Inc. and/or its affiliates. -->
+
 <div align="center">
 
 # SenseNova-Vision: Vision as Unified Multimodal Generation
@@ -23,52 +25,32 @@
   <img src="./assets/fig3_system_overview.webp" alt="SenseNova-Vision system overview" width="900">
 </div>
 
-## 📣 Updated News
+## 📣 업데이트 소식
 
-- `[2026.07.08]` Release of the dataset for [SenseNova-Vision-Corpus-50M](https://huggingface.co/datasets/sensenova/SenseNova-Vision-Corpus-50M).
-- `[2026.07.08]` Initial release of the weights for [SenseNova-Vision-7B-MoT](https://huggingface.co/sensenova/SenseNova-Vision-7B-MoT).
-- `[2026.07.08]` Initial release of the [inference code](https://github.com/OpenSenseNova/SenseNova-Vision) for SenseNova-Vision.
-- `[2026.07.08]` Release of the [Technical Report](https://arxiv.org/abs/2607.06560) for SenseNova-Vision.
+- `[2026.07.08]` [SenseNova-Vision-Corpus-50M](https://huggingface.co/datasets/sensenova/SenseNova-Vision-Corpus-50M) 데이터셋을 공개했습니다.
+- `[2026.07.08]` [SenseNova-Vision-7B-MoT](https://huggingface.co/sensenova/SenseNova-Vision-7B-MoT) 모델 가중치를 처음 공개했습니다.
+- `[2026.07.08]` SenseNova-Vision [추론 코드](https://github.com/OpenSenseNova/SenseNova-Vision)를 처음 공개했습니다.
+- `[2026.07.08]` SenseNova-Vision [기술 보고서](https://arxiv.org/abs/2607.06560)를 공개했습니다.
 
-## 🌟 Overview
+## 🌟 개요
 
-🚀 **SenseNova-Vision** formulate computer vision as unified multimodal generation, 
-where heterogeneous visual tasks are expressed through the native 
-text and image generation spaces of a unified multimodal model (UMM).
-Natural-language instructions and optional visual prompts specify the
-task, target regions or views, output schema, and decoding convention, while
-the model responds through native text, image, or mixed text-image generation.
+🚀 **SenseNova-Vision**은 컴퓨터 비전을 통합 멀티모달 생성 문제로 정식화합니다. 서로 다른 시각 작업을 통합 멀티모달 모델(UMM)의 기본 텍스트 및 이미지 생성 공간으로 표현합니다. 자연어 지시문과 선택적 시각 프롬프트는 작업, 대상 영역 또는 시점, 출력 스키마, 디코딩 규칙을 지정하고, 모델은 기본 텍스트, 이미지 또는 텍스트-이미지 혼합 생성으로 응답합니다.
 
-Text generation expresses symbolic visual records such as categories, boxes,
-points, OCR strings, keypoints, and camera parameters. Image generation handles
-dense spatial targets such as segmentation masks, depth maps, surface normals,
-and multi-view point maps. Mixed responses support compositional tasks that
-combine symbolic and dense outputs. This shared formulation lets one model cover
-structured visual understanding, dense geometric prediction, segmentation, and
-multi-view visual geometry while keeping outputs decodable for standard
-benchmarks.
+텍스트 생성은 카테고리, 박스, 포인트, OCR 문자열, 키포인트, 카메라 파라미터 같은 기호적 시각 기록을 표현합니다. 이미지 생성은 세그멘테이션 마스크, 깊이 맵, 표면 법선, 멀티뷰 포인트 맵 같은 조밀한 공간 타깃을 처리합니다. 혼합 응답은 기호 출력과 조밀한 출력을 결합하는 구성적 작업을 지원합니다. 이러한 공통 정식화 덕분에 하나의 모델이 구조화된 시각 이해, 조밀한 기하 예측, 세그멘테이션, 멀티뷰 시각 기하를 포괄하면서도 표준 벤치마크에서 디코딩 가능한 출력을 유지할 수 있습니다.
 
-To enable large-scale training, we convert heterogeneous computer-vision
-annotations into instruction-response examples and construct the
-**SenseNova-Vision Corpus**, spanning decodable text, image, and mixed
-text-image targets. Starting from an off-the-shelf pretrained UMM,
-SenseNova-Vision is trained primarily on this corpus, with auxiliary multimodal
-data used to preserve general understanding and generation capability, and
-requires no task-specific prediction heads, decoders, or architectural branches.
+대규모 학습을 가능하게 하기 위해, 다양한 컴퓨터 비전 어노테이션을 지시문-응답 예제로 변환하고 디코딩 가능한 텍스트, 이미지, 텍스트-이미지 혼합 타깃을 아우르는 **SenseNova-Vision Corpus**를 구축했습니다. SenseNova-Vision은 범용 사전학습 UMM에서 출발해 주로 이 코퍼스로 학습되며, 일반 이해 및 생성 능력을 유지하기 위해 보조 멀티모달 데이터를 함께 사용합니다. 작업별 예측 헤드, 디코더 또는 별도 아키텍처 분기는 필요하지 않습니다.
 
-### 🏗️ Key Contributions
+### 🏗️ 주요 기여
 
-- 🔗 We introduce a unified multimodal generation formulation that casts heterogeneous computer vision tasks into the native input-output spaces of UMMs.
-- 🧩 We construct the SenseNova-Vision Corpus, a large-scale computer-vision instruction-response corpus with decodable text, image, and mixed text-image targets.
-- ✨ We train SenseNova-Vision and show strong results across structured visual understanding, dense geometric prediction, segmentation, and multi-view visual geometry, while supporting language-defined task variants beyond fixed benchmark schemas.
+- 🔗 서로 다른 컴퓨터 비전 작업을 UMM의 기본 입출력 공간으로 변환하는 통합 멀티모달 생성 정식화를 제안합니다.
+- 🧩 디코딩 가능한 텍스트, 이미지, 텍스트-이미지 혼합 타깃을 포함하는 대규모 컴퓨터 비전 지시문-응답 코퍼스인 SenseNova-Vision Corpus를 구축합니다.
+- ✨ SenseNova-Vision을 학습하고, 구조화된 시각 이해, 조밀한 기하 예측, 세그멘테이션, 멀티뷰 시각 기하 전반에서 강력한 결과를 보이며, 고정된 벤치마크 스키마를 넘어 언어로 정의된 작업 변형도 지원함을 보입니다.
 
-## 🛠️ Quick Start
+## 🛠️ 빠른 시작
 
-This repository provides one entrypoint for examples, single-image inference,
-interactive inference, and benchmark inference. For the full runtime guide, see
-[`docs/EVAL.md`](./docs/EVAL.md).
+이 저장소는 예제 실행, 단일 이미지 추론, 대화형 추론, 벤치마크 추론을 위한 하나의 진입점을 제공합니다. 전체 실행 가이드는 [`docs/EVAL.md`](./docs/EVAL.md)를 참고하세요.
 
-Create the environment from the repository root:
+저장소 루트에서 환경을 생성합니다.
 
 ```bash
 git clone https://github.com/OpenSenseNova/SenseNova-Vision.git
@@ -77,13 +59,13 @@ bash setup.sh sensenova-vision
 conda activate sensenova-vision
 ```
 
-Run the curated example:
+준비된 예제를 실행합니다.
 
 ```bash
 bash scripts/run_sensenova_vision.sh example
 ```
 
-Run one inference request:
+추론 요청 하나를 실행합니다.
 
 ```bash
 bash scripts/run_sensenova_vision.sh inference \
@@ -92,17 +74,16 @@ bash scripts/run_sensenova_vision.sh inference \
   examples/images/2.jpg
 ```
 
-Launch the web demo. The wrapper prints the local URL before starting Gradio.
-**Recommended:** 1 x 80GB GPU for the full web demo.
+웹 데모를 실행합니다. 래퍼는 Gradio를 시작하기 전에 로컬 URL을 출력합니다.
+**권장:** 전체 웹 데모에는 80GB GPU 1장이 권장됩니다.
 
 ```bash
 MODEL_PATH=/path/to/SenseNova-Vision-7B-MoT \
   bash scripts/run_sensenova_vision.sh demo
 ```
 
-Run the full benchmark after preparing `datas/` and `jsonl_generate/` according
-to [`docs/data_prepare.md`](./docs/data_prepare.md).
-**Recommended:** at least one 8 x 80GB GPU machine for the full benchmark.
+[`docs/data_prepare.md`](./docs/data_prepare.md)에 따라 `datas/`와 `jsonl_generate/`를 준비한 뒤 전체 벤치마크를 실행합니다.
+**권장:** 전체 벤치마크에는 최소 8 x 80GB GPU 머신 1대가 권장됩니다.
 
 ```bash
 bash scripts/run_sensenova_vision.sh benchmark all \
@@ -110,13 +91,13 @@ bash scripts/run_sensenova_vision.sh benchmark all \
   --tasks_per_gpu 2
 ```
 
-## 🏆 Benchmark Results
+## 🏆 벤치마크 결과
 
-SenseNova-Vision is evaluated across structured visual understanding, dense geometric prediction, segmentation, and multi-view visual geometry. All tasks are formulated with natural-language instructions: textual outputs are parsed into benchmark-specific structures such as boxes, points, recognized text, keypoints, and camera parameters, while image outputs are decoded into masks, depth maps, normal maps, or 3D point maps.
+SenseNova-Vision은 구조화된 시각 이해, 조밀한 기하 예측, 세그멘테이션, 멀티뷰 시각 기하 전반에서 평가됩니다. 모든 작업은 자연어 지시문으로 정식화됩니다. 텍스트 출력은 박스, 포인트, 인식된 텍스트, 키포인트, 카메라 파라미터 같은 벤치마크별 구조로 파싱되고, 이미지 출력은 마스크, 깊이 맵, 법선 맵 또는 3D 포인트 맵으로 디코딩됩니다.
 
-### Structured Visual Understanding
+### 구조화된 시각 이해
 
-Structured visual understanding evaluates tasks whose outputs can be represented as structured textual predictions, such as bounding boxes, points, recognized text, and keypoint coordinates.
+구조화된 시각 이해는 바운딩 박스, 포인트, 인식된 텍스트, 키포인트 좌표처럼 구조화된 텍스트 예측으로 표현할 수 있는 작업을 평가합니다.
 
 <table>
   <thead>
@@ -246,9 +227,9 @@ Structured visual understanding evaluates tasks whose outputs can be represented
   </tbody>
 </table>
 
-### Dense Geometric Prediction
+### 조밀한 기하 예측
 
-Dense geometric prediction evaluates pixel-aligned geometric outputs, including monocular depth estimation and surface normal estimation.
+조밀한 기하 예측은 단안 깊이 추정과 표면 법선 추정을 포함해 픽셀 정렬된 기하 출력을 평가합니다.
 
 <table>
   <thead>
@@ -321,9 +302,9 @@ Dense geometric prediction evaluates pixel-aligned geometric outputs, including 
   </tbody>
 </table>
 
-### Segmentation
+### 세그멘테이션
 
-Segmentation evaluates mask prediction under semantic, referring, reasoning, grounded, and interactive guidance.
+세그멘테이션은 의미론적, 참조 기반, 추론 기반, grounded, 인터랙티브 안내 조건에서 마스크 예측을 평가합니다.
 
 <table>
   <thead>
@@ -354,9 +335,9 @@ Segmentation evaluates mask prediction under semantic, referring, reasoning, gro
   </tbody>
 </table>
 
-### Multi-View Visual Geometry
+### 멀티뷰 시각 기하
 
-Multi-view visual geometry evaluates geometric prediction from multiple input images, including multi-view point map reconstruction and camera pose estimation.
+멀티뷰 시각 기하는 멀티뷰 포인트 맵 재구성과 카메라 포즈 추정을 포함해 여러 입력 이미지에서의 기하 예측을 평가합니다.
 
 <table>
   <thead>
@@ -387,9 +368,9 @@ Multi-view visual geometry evaluates geometric prediction from multiple input im
   </tbody>
 </table>
 
-### Comparison with Generalist Vision Models
+### 범용 비전 모델과의 비교
 
-We further compare SenseNova-Vision with recent generalist visual models that span multiple visual capabilities.
+여러 시각 능력을 포괄하는 최근 범용 비전 모델들과 SenseNova-Vision을 추가로 비교합니다.
 
 <table>
   <thead>
@@ -415,14 +396,14 @@ We further compare SenseNova-Vision with recent generalist visual models that sp
   </tbody>
 </table>
 
-## 🎨 Showcase
+## 🎨 쇼케이스
 
 <p align="center">
   <a href="./assets/showcase/fig7_sensenova_vision_results.webp"><img src="./assets/showcase/fig7_sensenova_vision_results.webp" alt="SenseNova-Vision qualitative results across vision tasks" width="900"></a>
 </p>
 
 <details>
-<summary>Object Detection</summary>
+<summary>객체 탐지</summary>
 
 <table align="center">
   <thead>
@@ -446,7 +427,7 @@ We further compare SenseNova-Vision with recent generalist visual models that sp
 </details>
 
 <details>
-<summary>Referring Detection</summary>
+<summary>참조 탐지</summary>
 
 <table align="center">
   <tr>
@@ -480,7 +461,7 @@ We further compare SenseNova-Vision with recent generalist visual models that sp
 </details>
 
 <details>
-<summary>Visual Prompting</summary>
+<summary>시각 프롬프팅</summary>
 
 <table align="center">
   <tr>
@@ -496,7 +477,7 @@ We further compare SenseNova-Vision with recent generalist visual models that sp
 </details>
 
 <details>
-<summary>Layout Grounding</summary>
+<summary>레이아웃 그라운딩</summary>
 
 <table align="center">
   <tr>
@@ -508,7 +489,7 @@ We further compare SenseNova-Vision with recent generalist visual models that sp
 </details>
 
 <details>
-<summary>Keypoint Detection</summary>
+<summary>키포인트 탐지</summary>
 
 <table align="center">
   <tr>
@@ -530,7 +511,7 @@ We further compare SenseNova-Vision with recent generalist visual models that sp
 </details>
 
 <details>
-<summary>GUI Grounding</summary>
+<summary>GUI 그라운딩</summary>
 
 <table align="center">
   <tr>
@@ -542,7 +523,7 @@ We further compare SenseNova-Vision with recent generalist visual models that sp
 </details>
 
 <details>
-<summary>Dense Geometric Prediction</summary>
+<summary>조밀한 기하 예측</summary>
 
 <table align="center">
   <tr>
@@ -552,7 +533,7 @@ We further compare SenseNova-Vision with recent generalist visual models that sp
 
 </details>
 <details>
-<summary>Panoptic Segmentation</summary>
+<summary>파놉틱 세그멘테이션</summary>
 
 <table align="center">
   <tr>
@@ -568,7 +549,7 @@ We further compare SenseNova-Vision with recent generalist visual models that sp
 </details>
 
 <details>
-<summary>Semantic Segmentation</summary>
+<summary>시맨틱 세그멘테이션</summary>
 
 <table align="center">
   <tr>
@@ -584,7 +565,7 @@ We further compare SenseNova-Vision with recent generalist visual models that sp
 </details>
 
 <details>
-<summary>Referring Segmentation</summary>
+<summary>참조 세그멘테이션</summary>
 
 <table align="center">
   <tr>
@@ -600,7 +581,7 @@ We further compare SenseNova-Vision with recent generalist visual models that sp
 </details>
 
 <details>
-<summary>Reasoning Segmentation</summary>
+<summary>추론 세그멘테이션</summary>
 
 <table align="center">
   <tr>
@@ -616,7 +597,7 @@ We further compare SenseNova-Vision with recent generalist visual models that sp
 </details>
 
 <details>
-<summary>Grounded Conversation Generation Segmentation</summary>
+<summary>Grounded Conversation Generation 세그멘테이션</summary>
 
 <table align="center">
   <tr>
@@ -632,7 +613,7 @@ We further compare SenseNova-Vision with recent generalist visual models that sp
 </details>
 
 <details>
-<summary>Interactive Segmentation</summary>
+<summary>인터랙티브 세그멘테이션</summary>
 
 <table align="center">
   <tr>
@@ -654,19 +635,17 @@ We further compare SenseNova-Vision with recent generalist visual models that sp
 
 </details>
 
+## 데이터 프로토콜
 
-
-## Data Protocol
-
-SenseNova-Vision converts heterogeneous computer vision annotations into a common instruction-response schema. Each sample contains one or more visual inputs, a natural-language instruction that defines the task and output convention, and a decodable target represented as text, an image, or a mixed text-image response.
+SenseNova-Vision은 다양한 컴퓨터 비전 어노테이션을 공통 지시문-응답 스키마로 변환합니다. 각 샘플은 하나 이상의 시각 입력, 작업과 출력 규칙을 정의하는 자연어 지시문, 그리고 텍스트, 이미지 또는 텍스트-이미지 혼합 응답으로 표현되는 디코딩 가능한 타깃을 포함합니다.
 
 <p align="center">
   <a href="./assets/fig4_training_data.webp"><img src="./assets/fig4_training_data.webp" alt="Representative SenseNova-Vision data protocol examples" width="900"></a>
 </p>
 
-## ✒️ Citation
+## ✒️ 인용
 
-If you find SenseNova-Vision useful, please cite our technical report:
+SenseNova-Vision이 유용하다면 기술 보고서를 인용해 주세요.
 
 ```bibtex
 @misc{sensenova2026sensenovavision,
@@ -680,6 +659,6 @@ If you find SenseNova-Vision useful, please cite our technical report:
 }
 ```
 
-## License
+## 라이선스
 
-This project is released under the [Apache 2.0 License](./LICENSE).
+이 프로젝트는 [Apache 2.0 License](./LICENSE)에 따라 공개됩니다.

@@ -7,7 +7,7 @@
 </div>
 
 <div align="center">
-  <a href="./README.md">English</a> | <a href="./README_CN.md">简体中文</a>
+  <a href="./README.md">English</a> | <a href="./README_CN.md">简体中文</a> | <a href="./README_KO.md">한국어</a>
   <br>
 
   <a href="https://arxiv.org/abs/2607.06560"><img src="https://img.shields.io/badge/arXiv-SenseNova--Vision-b31b1b.svg" alt="arXiv"></a>
